@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <defs>
+    <radialGradient id="bg" cx="32%" cy="26%" r="90%">
+      <stop offset="0%" stop-color="#151923"/>
+      <stop offset="45%" stop-color="#0A0B0F"/>
+      <stop offset="100%" stop-color="#050609"/>
+    </radialGradient>
+
+    <radialGradient id="sphereBase" cx="34%" cy="28%" r="75%">
+      <stop offset="0%" stop-color="#232A38"/>
+      <stop offset="38%" stop-color="#12151D"/>
+      <stop offset="75%" stop-color="#08090C"/>
+      <stop offset="100%" stop-color="#050609"/>
+    </radialGradient>
+
+    <linearGradient id="rim" x1="20%" y1="0%" x2="85%" y2="100%">
+      <stop offset="0%" stop-color="rgba(199,206,219,0.55)"/>
+      <stop offset="35%" stop-color="rgba(199,206,219,0.10)"/>
+      <stop offset="100%" stop-color="rgba(0,217,229,0.35)"/>
+    </linearGradient>
+
+    <radialGradient id="specular" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="rgba(255,255,255,0.85)"/>
+      <stop offset="55%" stop-color="rgba(255,255,255,0.18)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </radialGradient>
+
+    <linearGradient id="meridianStroke" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#6CFFF2"/>
+      <stop offset="50%" stop-color="#00D9E5"/>
+      <stop offset="100%" stop-color="#0090A0"/>
+    </linearGradient>
+
+    <filter id="softBlurL" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="26"/>
+    </filter>
+    <filter id="softBlurM" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="10"/>
+    </filter>
+    <filter id="softBlurS" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+
+    <clipPath id="sphereClip">
+      <circle cx="512" cy="512" r="336"/>
+    </clipPath>
+  </defs>
+
+  <!-- Canvas: full-bleed square; the OS applies its own squircle mask. -->
+  <rect width="1024" height="1024" fill="url(#bg)"/>
+
+  <!-- Ambient accent glow behind the sphere, echoing the app's accent glow token. -->
+  <circle cx="512" cy="512" r="360" fill="#00D9E5" opacity="0.16" filter="url(#softBlurL)"/>
+
+  <!-- The glass sphere body. -->
+  <circle cx="512" cy="512" r="336" fill="url(#sphereBase)"/>
+
+  <g clip-path="url(#sphereClip)">
+    <!-- Faint latitude rings, echoing Globe.tsx's orthographic lines of latitude. -->
+    <ellipse cx="512" cy="512" rx="330" ry="112" fill="none" stroke="rgba(199,206,219,0.14)" stroke-width="2"/>
+    <ellipse cx="512" cy="380" rx="266" ry="72" fill="none" stroke="rgba(199,206,219,0.09)" stroke-width="2"/>
+    <ellipse cx="512" cy="644" rx="266" ry="72" fill="none" stroke="rgba(199,206,219,0.09)" stroke-width="2"/>
+
+    <!-- Two dim meridians, unlit — the ones you didn't pick. -->
+    <ellipse cx="512" cy="512" rx="118" ry="336" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="3" transform="rotate(0 512 512)"/>
+
+    <!-- The lit meridian: the app's own name, made literal. -->
+    <ellipse cx="512" cy="512" rx="70" ry="336" fill="none" stroke="url(#meridianStroke)" stroke-width="9" opacity="0.95"/>
+    <ellipse cx="512" cy="512" rx="70" ry="336" fill="none" stroke="#6CFFF2" stroke-width="20" opacity="0.35" filter="url(#softBlurM)"/>
+
+    <!-- Sphere-internal shading for volume. -->
+    <circle cx="512" cy="512" r="336" fill="url(#specular)" opacity="0.5" transform="translate(-90,-110) scale(0.62)" />
+    <circle cx="512" cy="512" r="336" fill="#000" opacity="0.30"
+      style="mix-blend-mode:multiply"
+      clip-path="url(#sphereClip)" />
+  </g>
+
+  <!-- Glass rim light. -->
+  <circle cx="512" cy="512" r="336" fill="none" stroke="url(#rim)" stroke-width="4"/>
+
+  <!-- Specular glass highlight, upper-left, per a top-left light source. -->
+  <ellipse cx="404" cy="366" rx="150" ry="96" fill="url(#specular)" opacity="0.55" filter="url(#softBlurM)"/>
+  <ellipse cx="380" cy="330" rx="46" ry="26" fill="rgba(255,255,255,0.75)" filter="url(#softBlurS)"/>
+
+  <!-- Bottom contact shadow for grounding. -->
+  <ellipse cx="512" cy="900" rx="230" ry="34" fill="#000" opacity="0.35" filter="url(#softBlurL)"/>
+</svg>
