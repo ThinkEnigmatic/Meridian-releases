@@ -15,6 +15,20 @@ Grab the latest installer for your operating system from the
 
 Once installed, Meridian keeps itself up to date automatically — you won't need to download again.
 
+## Pricing
+
+This build includes a **3-day free trial**, no account or card required. After that, it's **$9.99,
+once** — the same price as the Mac App Store listing, no subscription.
+
+When the trial ends, the app will prompt you to buy; you can also buy anytime from
+**[the license page](https://integratedagentics.lemonsqueezy.com/checkout/buy/47093c79-27e5-4be9-a4e1-665275b13612)**.
+Checkout is handled by LemonSqueezy — after paying, you'll get a license key by email. Enter it in
+the app (on the trial-ended screen, or **Settings → License**) to unlock it permanently on that
+device.
+
+Already bought Meridian on the Mac App Store? You don't need a separate key there — Apple's purchase
+covers that copy directly.
+
 ## First launch (the app is not code-signed yet)
 
 Because the app isn't signed with a paid developer certificate, your OS will warn you the first time:
