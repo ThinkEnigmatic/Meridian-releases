@@ -498,13 +498,12 @@
       <p class="download-note" style="margin-top:14px;">Also coming to the Mac App Store as <b>Meridian
         Household Finance</b> ($9.99, one-time) — same app, with Quasar free for iOS and watchOS once
         paired. Currently in Apple review.</p>
+      <p class="download-note" style="margin-top:14px;">macOS builds are signed with a Developer ID
+        certificate and notarized by Apple — no warning, no workaround, opens like any other Mac app.</p>
       <details>
-        <summary>First launch warns the app is unsigned — here's why, and the one-time fix</summary>
-        <p>Meridian isn't signed with a paid developer certificate. <b>macOS:</b> right-click Meridian →
-          Open → Open. If it still refuses, run once in Terminal:
-          <code>xattr -dr com.apple.quarantine /Applications/Meridian.app</code>.
-          <b>Windows:</b> on the SmartScreen prompt, click More info → Run anyway. One-time per install —
-          silent after that.</p>
+        <summary>Windows: SmartScreen warning on first launch</summary>
+        <p>Windows builds aren't signed with a paid certificate yet. On the SmartScreen prompt, click
+          More info → Run anyway. One-time per install — silent after that.</p>
       </details>
     </div>
   </div>
